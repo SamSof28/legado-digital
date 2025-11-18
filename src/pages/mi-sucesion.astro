@@ -1,0 +1,167 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import DashboardSucesion from "@/components/DashboardSucesion.astro"
+import TimelineSucesion from "@/components/TimelineSucesion.astro"
+import DocumentosSucesion from "@/components/DocumentosSucesion.astro"
+---
+
+<Layout
+  title="Mi Sucesión - Notaría 27"
+  description="Portal de seguimiento sobre el trámite de sucesión en la Notaría 27, requisitos y pasos a seguir."
+>
+  <main class="px-4 py-16 md:py-36">
+    <SectionContainer>
+      <div class="page-header">
+        <h1 class="page-title">
+          👤 Mi Sucesión - Seguimiento en Tiempo Real
+        </h1>
+        <p class="page-subtitle">
+          Consulta el estado de tu trámite en cualquier momento y accede a todos tus documentos
+        </p>
+      </div>
+
+      <DashboardSucesion />
+      <TimelineSucesion />
+      <DocumentosSucesion />
+
+      <div class="help-section">
+        <h2 class="help-title">¿Tienes preguntas sobre tu sucesión?</h2>
+        <p class="help-text">
+          Si necesitas aclaraciones sobre los pasos del proceso o tus documentos, no dudes en contactarnos:
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="contact-icon">📞</span>
+            <h3>Llamada</h3>
+            <p>(60) 1234 5678</p>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">📧</span>
+            <h3>Correo</h3>
+            <p>sucesion@notaria27.com</p>
+          </div>
+          <div class="contact-card">
+            <span class="contact-icon">💬</span>
+            <h3>Chat</h3>
+            <p>Respuesta en máx. 4 horas</p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgb(17 24 39);
+    margin-bottom: 16px;
+  }
+
+  :global(.dark) .page-title {
+    color: white;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    color: rgb(107 114 128);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  :global(.dark) .page-subtitle {
+    color: rgb(156 163 175);
+  }
+
+  .help-section {
+    background: linear-gradient(135deg, rgb(240 249 255), rgb(224 242 254));
+    border-radius: 12px;
+    padding: 48px 32px;
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  :global(.dark) .help-section {
+    background: linear-gradient(135deg, rgb(30 58 138), rgb(15 23 42));
+  }
+
+  .help-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin-bottom: 16px;
+  }
+
+  :global(.dark) .help-title {
+    color: white;
+  }
+
+  .help-text {
+    color: rgb(75 85 99);
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+  }
+
+  :global(.dark) .help-text {
+    color: rgb(209 213 219);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .contact-card {
+    background: rgb(31 41 55);
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .contact-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .contact-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: rgb(31 41 55);
+  }
+
+  :global(.dark) .contact-card h3 {
+    color: white;
+  }
+
+  .contact-card p {
+    margin: 0;
+    color: rgb(107 114 128);
+    font-weight: 500;
+  }
+
+  :global(.dark) .contact-card p {
+    color: rgb(156 163 175);
+  }
+</style>

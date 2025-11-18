@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout
+  title="Calculadora de Sucesiones - Notaría 27"
+  description="La Calculadora de Sucesiones de la Notaría 27 te ayuda a estimar los costos asociados al trámite de sucesión de manera rápida y sencilla."
+>
+  <main class="px-4 py-16 md:py-36 max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">
+      Calculadora de Sucesiones
+    </h1>
+    <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+      Utiliza esta calculadora para obtener una estimación rápida de los costos asociados al trámite de sucesión.
+    </p>
+    
+    <form class="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md" id="calcForm">
+      <!-- Inputs -->
+      <div>
+        <label for="valor-bienes" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Valor total de los bienes (COP)
+        </label>
+        <input type="number" id="valor-bienes" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700" placeholder="Ingrese valor" required />
+      </div>
+
+      <div>
+        <label for="pasivos" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Pasivos y gastos (COP)
+        </label>
+        <input type="number" id="pasivos" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700" placeholder="Ingrese pasivos" value="0" />
+      </div>
+
+      <div>
+        <label for="valor-inmuebles" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          Valor de inmuebles (COP)
+        </label>
+        <input type="number" id="valor-inmuebles" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700" placeholder="Ingrese valor de inmuebles" value="0" />
+      </div>
+
+      <button type="button" id="calcular-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+        Calcular
+      </button>
+    </form>
+
+    <!-- Resultados -->
+    <div id="resultados" class="hidden mt-8 bg-blue-50 dark:bg-gray-700 p-6 rounded-lg space-y-4">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Desglose de Costos</h2>
+      <div class="space-y-2">
+        <p><strong>Derechos notariales:</strong> <span id="result-notariales">$0</span></p>
+        <p><strong>Ganancia ocasional (15%):</strong> <span id="result-ganancia">$0</span></p>
+        <p><strong>Impuesto de registro:</strong> <span id="result-registro">$0</span></p>
+        <p class="text-xl font-bold border-t pt-2"><strong>Costo total estimado:</strong> <span id="result-total">$0</span></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Constantes
+    const TASA_NOTARIAL = 0.003;
+    const IVA = 0.19;
+    const GANANCIA_OCASIONAL = 0.15;
+    const TASA_REGISTRO = 0.02; // 2% para este ejemplo
+
+    // Elementos del DOM
+    const form = document.getElementById('calcForm') as HTMLFormElement | null;
+    const calcBtn = document.getElementById('calcular-btn') as HTMLButtonElement | null;
+    const resultadosDiv = document.getElementById('resultados') as HTMLDivElement | null;
+
+    // Función principal de cálculo
+    function calcularCostos() {
+      const valorBienes = parseFloat(document.getElementById('valor-bienes').value) || 0;
+      const pasivos = parseFloat(document.getElementById('pasivos').value) || 0;
+      const valorInmuebles = parseFloat(document.getElementById('valor-inmuebles').value) || 0;
+
+      if (valorBienes <= 0) {
+        alert('Ingrese un valor válido para los bienes');
+        return;
+      }
+
+      // 1. Derechos notariales + IVA
+      const derechosNotariales = (valorBienes * TASA_NOTARIAL) * (1 + IVA);
+
+      // 2. Ganancia ocasional
+      const baseGravable = valorBienes - pasivos;
+      const gananciaOcasional = baseGravable > 0 ? baseGravable * GANANCIA_OCASIONAL : 0;
+
+      // 3. Impuesto de registro (solo inmuebles)
+      const impuestoRegistro = valorInmuebles * TASA_REGISTRO;
+
+      // 4. Total
+      const costoTotal = derechosNotariales + gananciaOcasional + impuestoRegistro;
+
+      // Mostrar resultados
+      mostrarResultados(derechosNotariales, gananciaOcasional, impuestoRegistro, costoTotal);
+    }
+
+    function mostrarResultados(notariales: number, ganancia: number, registro: number, total: number) {
+      const resultNotariales = document.getElementById('result-notariales') as HTMLSpanElement | null;
+      const resultGanancia = document.getElementById('result-ganancia') as HTMLSpanElement | null;
+      const resultRegistro = document.getElementById('result-registro') as HTMLSpanElement | null;
+      const resultTotal = document.getElementById('result-total') as HTMLSpanElement | null;
+
+      if (resultNotariales) resultNotariales.textContent = formatearMoneda(notariales);
+      if (resultGanancia) resultGanancia.textContent = formatearMoneda(ganancia);
+      if (resultRegistro) resultRegistro.textContent = formatearMoneda(registro);
+      if (resultTotal) resultTotal.textContent = formatearMoneda(total);
+      
+      if (resultadosDiv) resultadosDiv.classList.remove('hidden');
+    }
+
+    function formatearMoneda(valor: number) {
+      return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(valor);
+    }
+
+    // Event listeners
+    if (calcBtn) calcBtn.addEventListener('click', calcularCostos);
+    if (form) form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      calcularCostos();
+    });
+  </script>
+</Layout>

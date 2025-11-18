@@ -1,0 +1,474 @@
+---
+// Componente de formulario para información de la cita
+---
+
+<div class="booking-form">
+  <h3 class="form-title">Información de tu Cita</h3>
+  
+  <form id="booking-form" class="form-container">
+    <div class="form-group">
+      <label for="fullname" class="form-label">Nombre Completo *</label>
+      <input 
+        type="text" 
+        id="fullname"
+        class="form-input" 
+        placeholder="Ej: María González Pérez"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cedula" class="form-label">Cédula de Ciudadanía *</label>
+      <input 
+        type="text" 
+        id="cedula"
+        class="form-input" 
+        placeholder="Ej: 1234567890"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone" class="form-label">Teléfono / Celular *</label>
+      <input 
+        type="tel" 
+        id="phone"
+        class="form-input" 
+        placeholder="Ej: 300 123 4567"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Correo Electrónico *</label>
+      <input 
+        type="email" 
+        id="email"
+        class="form-input" 
+        placeholder="ejemplo@correo.com"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="assistance" class="form-label">¿Requiere acompañamiento presencial? *</label>
+      <select id="assistance" class="form-input" required>
+        <option value="no">No, puedo hacerlo solo(a)</option>
+        <option value="si">Sí, necesito ayuda (adultos mayores)</option>
+        <option value="mobiliario">Sí, necesito accesibilidad especial</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes" class="form-label">Observaciones (opcional)</label>
+      <textarea 
+        id="notes"
+        class="form-input form-textarea"
+        placeholder="Ej: Tengo limitaciones de movilidad..."
+      ></textarea>
+    </div>
+
+    <button type="submit" id="submit-btn" class="submit-btn" disabled>
+      ✓ Confirmar Cita
+    </button>
+
+    <div id="success-message" class="success-message hidden">
+      <div class="success-content">
+        <svg class="success-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <div>
+          <h4>¡Cita confirmada exitosamente!</h4>
+          <p>Recibirás un correo y SMS con los detalles de tu cita. Te recordaremos 24 horas antes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-message" class="error-message hidden">
+      <p id="error-text"></p>
+    </div>
+  </form>
+
+  <div class="booking-summary">
+    <h4 class="summary-title">Resumen de tu Cita</h4>
+    <div class="summary-item">
+      <span class="summary-label">Fecha:</span>
+      <span id="summary-date" class="summary-value">No seleccionada</span>
+    </div>
+    <div class="summary-item">
+      <span class="summary-label">Hora:</span>
+      <span id="summary-time" class="summary-value">No seleccionada</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .booking-form {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  :global(.dark) .calendar-container {
+    background: rgb(31 41 55); 
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: rgb(17 24 39);
+  }
+
+  :global(.dark) .form-title {
+    color: white;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: rgb(55 65 81);
+  }
+
+  :global(.dark) .form-label {
+    color: rgb(209 213 219);
+  }
+
+  .form-input {
+    padding: 12px;
+    border: 2px solid rgb(229 231 235);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: rgb(31 41 55);
+    background: white;
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .form-input {
+    background: rgb(55 65 81);
+    color: white;
+    border-color: rgb(75 85 99);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: rgb(59 130 246);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  :global(.dark) .form-input:focus {
+    border-color: rgb(96 165 250);
+  }
+
+  .form-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .submit-btn {
+    padding: 14px 20px;
+    background: rgb(59 130 246);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    background: rgb(37 99 235);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  :global(.dark) .submit-btn:disabled {
+    opacity: 0.4;
+  }
+
+  .success-message {
+    padding: 16px;
+    background: rgb(240 253 244);
+    border: 2px solid rgb(134 239 172);
+    border-radius: 8px;
+    color: rgb(22 101 52);
+    margin-top: 20px;
+  }
+
+  :global(.dark) .success-message {
+    background: rgb(6 78 59);
+    border-color: rgb(52 211 153);
+    color: rgb(167 243 208);
+  }
+
+  .success-message.hidden {
+    display: none;
+  }
+
+  .success-content {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .success-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: rgb(34 197 94);
+  }
+
+  :global(.dark) .success-icon {
+    color: rgb(52 211 153);
+  }
+
+  .success-message h4 {
+    margin: 0;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .success-message p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  .error-message {
+    padding: 12px 16px;
+    background: rgb(254 242 242);
+    border: 2px solid rgb(252 165 165);
+    border-radius: 8px;
+    color: rgb(153 27 27);
+    font-size: 0.875rem;
+    margin-top: 20px;
+  }
+
+  :global(.dark) .error-message {
+    background: rgb(127 29 29);
+    border-color: rgb(248 113 113);
+    color: rgb(254 226 226);
+  }
+
+  .error-message.hidden {
+    display: none;
+  }
+
+  .booking-summary {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 2px solid rgb(229 231 235);
+  }
+
+  :global(.dark) .booking-summary {
+    border-top-color: rgb(55 65 81);
+  }
+
+  .summary-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: rgb(31 41 55);
+    font-size: 0.95rem;
+  }
+
+  :global(.dark) .summary-title {
+    color: white;
+  }
+
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.95rem;
+  }
+
+  .summary-label {
+    color: rgb(107 114 128);
+    font-weight: 500;
+  }
+
+  :global(.dark) .summary-label {
+    color: rgb(156 163 175);
+  }
+
+  .summary-value {
+    font-weight: 600;
+    color: rgb(59 130 246);
+  }
+
+  :global(.dark) .summary-value {
+    color: rgb(147 197 253);
+  }
+</style>
+
+<script>
+  interface BookingData {
+    fullname?: string;
+    cedula?: string;
+    phone?: string;
+    email?: string;
+    assistance?: string;
+    notes?: string;
+    date?: string | null;
+    time?: string | null;
+  }
+
+  const form = document.getElementById('booking-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const fullnameInput = document.getElementById('fullname') as HTMLInputElement;
+  const cedulaInput = document.getElementById('cedula') as HTMLInputElement;
+  const phoneInput = document.getElementById('phone') as HTMLInputElement;
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  const assistanceSelect = document.getElementById('assistance') as HTMLSelectElement;
+  const notesInput = document.getElementById('notes') as HTMLTextAreaElement;
+
+  const successMsg = document.getElementById('success-message') as HTMLDivElement;
+  const errorMsg = document.getElementById('error-message') as HTMLDivElement;
+  const errorText = document.getElementById('error-text') as HTMLParagraphElement;
+
+  const summaryDate = document.getElementById('summary-date') as HTMLSpanElement;
+  const summaryTime = document.getElementById('summary-time') as HTMLSpanElement;
+
+  let bookingData: BookingData = {};
+
+  // Escuchar cambios en el calendario
+  window.addEventListener('dateSelected', (e: any) => {
+    const dateObj = e.detail.dateObj;
+    const monthNames = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    
+    const dateStr = `${dayNames[dateObj.getDay()]} ${dateObj.getDate()} de ${monthNames[dateObj.getMonth()]}`;
+    bookingData.date = e.detail.date;
+    summaryDate.textContent = dateStr;
+    checkFormValidity();
+  });
+
+  window.addEventListener('timeSelected', (e: any) => {
+    bookingData.time = e.detail.time;
+    summaryTime.textContent = e.detail.time;
+    checkFormValidity();
+  });
+
+  // Validar formulario
+  function checkFormValidity() {
+    const isFormValid = 
+      fullnameInput.value.trim() !== '' &&
+      cedulaInput.value.trim() !== '' &&
+      phoneInput.value.trim() !== '' &&
+      emailInput.value.trim() !== '' &&
+      bookingData.date &&
+      bookingData.time;
+
+    submitBtn.disabled = !isFormValid;
+  }
+
+  // Event listeners de inputs
+  [fullnameInput, cedulaInput, phoneInput, emailInput].forEach(input => {
+    input.addEventListener('input', checkFormValidity);
+  });
+
+  // Validar email
+  emailInput.addEventListener('change', () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+      showError('Por favor ingresa un correo válido');
+    }
+  });
+
+  // Validar cédula
+  cedulaInput.addEventListener('change', () => {
+    const cedula = cedulaInput.value.trim();
+    if (!/^\d{7,10}$/.test(cedula)) {
+      showError('La cédula debe tener entre 7 y 10 dígitos');
+    }
+  });
+
+  // Envío del formulario
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    // Recopilar datos
+    const data: BookingData = {
+      fullname: fullnameInput.value.trim(),
+      cedula: cedulaInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      email: emailInput.value.trim(),
+      assistance: assistanceSelect.value,
+      notes: notesInput.value.trim(),
+      date: bookingData.date,
+      time: bookingData.time
+    };
+
+    // Simular envío
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Procesando...';
+
+      // Aquí iría la llamada a una API
+      // const response = await fetch('/api/bookings', { method: 'POST', body: JSON.stringify(data) });
+      
+      // Simular delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      // Mostrar éxito
+      showSuccess();
+      form.reset();
+      summaryDate.textContent = 'No seleccionada';
+      summaryTime.textContent = 'No seleccionada';
+      submitBtn.textContent = '✓ Confirmar Cita';
+      checkFormValidity();
+
+      // Log de datos (en producción se enviarían a una API)
+      console.log('Cita confirmada:', data);
+    } catch (error) {
+      showError('Error al confirmar la cita. Por favor intenta de nuevo.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '✓ Confirmar Cita';
+    }
+  });
+
+  function showSuccess() {
+    successMsg.classList.remove('hidden');
+    errorMsg.classList.add('hidden');
+    
+    // Auto-ocultar después de 5 segundos
+    setTimeout(() => {
+      successMsg.classList.add('hidden');
+    }, 5000);
+  }
+
+  function showError(message: string) {
+    errorText.textContent = message;
+    errorMsg.classList.remove('hidden');
+  }
+
+  function hideError() {
+    errorMsg.classList.add('hidden');
+  }
+</script>

@@ -1,0 +1,465 @@
+---
+// Componente de Calendario funcional para agendamiento de citas
+---
+
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button id="prev-month" class="nav-btn" aria-label="Mes anterior">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <h3 id="current-month" class="month-title">Noviembre 2025</h3>
+    <button id="next-month" class="nav-btn" aria-label="Próximo mes">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <div class="weekdays">
+    <div class="weekday">Lun</div>
+    <div class="weekday">Mar</div>
+    <div class="weekday">Mié</div>
+    <div class="weekday">Jue</div>
+    <div class="weekday">Vie</div>
+    <div class="weekday">Sáb</div>
+    <div class="weekday">Dom</div>
+  </div>
+
+  <div id="calendar-grid" class="calendar-grid">
+    <!-- Se llena dinámicamente con JavaScript -->
+  </div>
+
+  <div class="time-slots-section">
+    <h4 id="selected-date-title" class="selected-date-title">Selecciona una fecha</h4>
+    <div id="time-slots" class="time-slots">
+      <!-- Se llena dinámicamente con JavaScript -->
+    </div>
+  </div>
+</div>
+
+<style>
+  .calendar-container {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  :global(.dark) .calendar-container {
+    background: rgb(31 41 55); 
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  .month-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: rgb(17 24 39);
+    flex: 1;
+  }
+
+  :global(.dark) .month-title {
+    color: white;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(229 231 235);
+    color: rgb(31 41 55);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  :global(.dark) .nav-btn {
+    background: rgb(55 65 81);
+    color: white;
+  }
+
+  .nav-btn:hover {
+    background: rgb(209 213 219);
+    transform: scale(1.05);
+  }
+
+  :global(.dark) .nav-btn:hover {
+    background: rgb(75 85 99);
+  }
+
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .weekday {
+    text-align: center;
+    font-weight: 600;
+    color: rgb(107 114 128);
+    font-size: 0.875rem;
+    padding: 8px 0;
+  }
+
+  :global(.dark) .weekday {
+    color: rgb(209 213 219);
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    color: rgb(31 41 55);
+    background: rgb(243 244 246);
+  }
+
+  :global(.dark) .day {
+    background: rgb(55 65 81);
+    color: white;
+  }
+
+  .day:not(.disabled):hover {
+    background: rgb(219 234 254);
+    border-color: rgb(59 130 246);
+    transform: scale(1.05);
+  }
+
+  :global(.dark) .day:not(.disabled):hover {
+    background: rgb(30 58 138);
+  }
+
+  .day.disabled {
+    color: rgb(209 213 219);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .day.selected {
+    background: rgb(59 130 246);
+    color: white;
+    border-color: rgb(59 130 246);
+    font-weight: 700;
+  }
+
+  .day.today {
+    border-color: rgb(34 197 94);
+  }
+
+  .time-slots-section {
+    border-top: 2px solid rgb(229 231 235);
+    padding-top: 24px;
+  }
+
+  :global(.dark) .time-slots-section {
+    border-top-color: rgb(55 65 81);
+  }
+
+  .selected-date-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: rgb(31 41 55);
+  }
+
+  :global(.dark) .selected-date-title {
+    color: white;
+  }
+
+  .time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+  }
+
+  .time-slot {
+    padding: 10px;
+    border: 2px solid rgb(219 234 254);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: rgb(59 130 246);
+    background: rgb(240 249 255);
+    transition: all 0.2s ease;
+  }
+
+  :global(.dark) .time-slot {
+    border-color: rgb(30 58 138);
+    background: rgb(15 23 42);
+    color: rgb(147 197 253);
+  }
+
+  .time-slot:hover:not(.unavailable) {
+    background: rgb(219 234 254);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  }
+
+  :global(.dark) .time-slot:hover:not(.unavailable) {
+    background: rgb(30 58 138);
+  }
+
+  .time-slot.selected {
+    background: rgb(59 130 246);
+    color: white;
+    border-color: rgb(59 130 246);
+  }
+
+  .time-slot.unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: rgb(209 213 219);
+    border-color: rgb(209 213 219);
+  }
+
+  .no-selection {
+    text-align: center;
+    color: rgb(107 114 128);
+    padding: 16px;
+    font-size: 0.875rem;
+  }
+
+  :global(.dark) .no-selection {
+    color: rgb(156 163 175);
+  }
+</style>
+
+<script>
+  // Estado global
+  let currentDate = new Date(2025, 10, 1); // Noviembre 2025
+  let selectedDate: Date | null = null;
+  let selectedTime: string | null = null;
+
+  // Configuración de horarios disponibles
+  const HORARIOS_DISPONIBLES = [
+    "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM",
+    "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+  ];
+
+  // Horarios ocupados (simular ocupación)
+  const HORARIOS_OCUPADOS: Record<string, string[]> = {
+    "2025-11-25": ["8:00 AM", "2:00 PM"],
+    "2025-11-26": ["9:00 AM", "10:00 AM"],
+    "2025-11-27": ["11:00 AM", "3:00 PM", "4:00 PM"],
+  };
+
+  function formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function renderCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Actualizar título
+    const monthNames = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    const monthTitle = document.getElementById("current-month");
+    if (monthTitle) {
+      monthTitle.textContent = `${monthNames[month]} ${year}`;
+    }
+
+    // Obtener primer día del mes
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const prevLastDay = new Date(year, month, 0);
+    
+    // Calcular días
+    const daysInMonth = lastDay.getDate();
+    const startingDayOfWeek = firstDay.getDay();
+    const adjustedStart = startingDayOfWeek === 0 ? 6 : startingDayOfWeek - 1;
+
+    const grid = document.getElementById("calendar-grid");
+    if (!grid) return;
+    
+    grid.innerHTML = "";
+
+    // Días del mes anterior
+    for (let i = adjustedStart - 1; i >= 0; i--) {
+      const day = prevLastDay.getDate() - i;
+      const dayEl = document.createElement("div");
+      dayEl.className = "day disabled";
+      dayEl.textContent = day.toString();
+      grid.appendChild(dayEl);
+    }
+
+    // Días del mes actual
+    const today = new Date();
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateObj = new Date(year, month, day);
+      const dayEl = document.createElement("div");
+      dayEl.className = "day";
+      dayEl.textContent = day.toString();
+
+      // Marcar hoy
+      if (
+        dateObj.getFullYear() === today.getFullYear() &&
+        dateObj.getMonth() === today.getMonth() &&
+        dateObj.getDate() === today.getDate()
+      ) {
+        dayEl.classList.add("today");
+      }
+
+      // Deshabilitar días pasados
+      if (dateObj < today) {
+        dayEl.classList.add("disabled");
+        dayEl.style.cursor = "not-allowed";
+      } else {
+        dayEl.addEventListener("click", () => selectDate(dateObj));
+      }
+
+      // Marcar día seleccionado
+      if (selectedDate && formatDate(dateObj) === formatDate(selectedDate)) {
+        dayEl.classList.add("selected");
+      }
+
+      grid.appendChild(dayEl);
+    }
+
+    // Días del próximo mes
+    const remainingDays = 42 - (adjustedStart + daysInMonth);
+    for (let day = 1; day <= remainingDays; day++) {
+      const dayEl = document.createElement("div");
+      dayEl.className = "day disabled";
+      dayEl.textContent = day.toString();
+      grid.appendChild(dayEl);
+    }
+  }
+
+  function selectDate(date: Date) {
+    selectedDate = new Date(date);
+    selectedTime = null;
+    renderCalendar();
+    renderTimeSlots();
+    
+    // Evento personalizado para comunicar la selección
+    window.dispatchEvent(
+      new CustomEvent("dateSelected", {
+        detail: { date: formatDate(date), dateObj: date }
+      })
+    );
+  }
+
+  function renderTimeSlots() {
+    const slotsContainer = document.getElementById("time-slots");
+    const titleEl = document.getElementById("selected-date-title");
+
+    if (!selectedDate || !slotsContainer || !titleEl) return;
+
+    const dateStr = formatDate(selectedDate);
+    const monthNames = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+    titleEl.textContent = `${dayNames[selectedDate.getDay()]} ${selectedDate.getDate()} de ${monthNames[selectedDate.getMonth()]}`;
+
+    slotsContainer.innerHTML = "";
+    const ocupados = HORARIOS_OCUPADOS[dateStr] || [];
+
+    HORARIOS_DISPONIBLES.forEach((horario) => {
+      const slot = document.createElement("div");
+      slot.className = "time-slot";
+      slot.textContent = horario;
+
+      if (ocupados.includes(horario)) {
+        slot.classList.add("unavailable");
+      } else {
+        slot.addEventListener("click", () => selectTime(horario));
+      }
+
+      if (selectedTime === horario) {
+        slot.classList.add("selected");
+      }
+
+      slotsContainer.appendChild(slot);
+    });
+
+    // Evento personalizado
+    window.dispatchEvent(
+      new CustomEvent("timeSlotsUpdated", {
+        detail: { date: dateStr, availableSlots: HORARIOS_DISPONIBLES.filter(h => !ocupados.includes(h)) }
+      })
+    );
+  }
+
+  function selectTime(horario: string) {
+    selectedTime = horario;
+    renderTimeSlots();
+    
+    // Evento personalizado para comunicar la selección
+    window.dispatchEvent(
+      new CustomEvent("timeSelected", {
+        detail: { time: horario, date: formatDate(selectedDate!) }
+      })
+    );
+  }
+
+  // Event listeners
+  const prevBtn = document.getElementById("prev-month");
+  const nextBtn = document.getElementById("next-month");
+
+  prevBtn?.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    selectedDate = null;
+    selectedTime = null;
+    renderCalendar();
+    renderTimeSlots();
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    selectedDate = null;
+    selectedTime = null;
+    renderCalendar();
+    renderTimeSlots();
+  });
+
+  // Renderizado inicial
+  renderCalendar();
+  renderTimeSlots();
+
+  // Exportar funciones globales
+  (window as any).getSelectedDate = () => selectedDate;
+  (window as any).getSelectedTime = () => selectedTime;
+  (window as any).getBookingData = () => ({
+    date: selectedDate ? formatDate(selectedDate) : null,
+    time: selectedTime
+  });
+</script>

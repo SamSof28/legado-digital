@@ -1,33 +1,62 @@
 ---
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
+// Hero component para Notaría 27 - Legado Digital
 ---
 
-<div class="max-w-4xl text-center">
-  <div class="flex justify-center mb-8">
-
+<div class="w-full text-center space-y-8 max-w-4xl mx-auto">
+  <div class="space-y-4">
+    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
+      Tu sucesión, <br />
+      <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+        hecha simple
+      </span>
+    </h1>
+    
+    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+      En Notaría 27 entendemos que este es un momento delicado. 
+      Por eso creamos <strong>Legado Digital</strong>: una plataforma moderna que acompaña a las familias 
+      en el proceso de sucesión con empatía, claridad y eficiencia.
+    </p>
   </div>
-  
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-6xl dark:text-white mb-4"
-  >
-    Ciberseguridad
-  </h1>
-  <h2
-    class="text-2xl font-semibold text-gray-600 dark:text-gray-300 mb-6"
-  >
-    Tecnología Emergente para la Protección Digital
-  </h2>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-blue-200 [&>strong]:text-blue-600 [&>strong]:font-semibold dark:text-gray-300 max-w-3xl mx-auto"
-  >
-    La <strong>ciberseguridad</strong> es una de las tecnologías emergentes más críticas del siglo XXI, 
-    enfocada en proteger sistemas, redes y datos digitales contra <strong>amenazas cibernéticas</strong>. 
-    Descubre su importancia, implementación y casos de éxito reales.
-  </p>
-  <nav class="flex flex-wrap gap-4 mt-8 justify-center">
-    <SocialPill href="mailto:sromana146@soyudemedellin.edu.co">
-      <MailIcon class="size-4" />
+
+  <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+    <a 
+      href="/documentos" 
+      class="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold rounded-lg transition hover:shadow-xl transform hover:scale-105"
+    >
+      📋 Requisitos y Documentos
+    </a>
+    <a 
+      href="/agendar" 
+      class="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-bold rounded-lg transition hover:shadow-xl hover:scale-105"
+    >
+      📅 Agendar Mi Cita
+    </a>
+  </div>
+
+  <div class="pt-12 grid md:grid-cols-3 gap-6 text-left">
+    <div class="flex gap-4 items-start">
+      <span class="text-3xl">✓</span>
+      <div>
+        <h3 class="font-bold text-gray-900 dark:text-white">Sin filas</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Agendar online 24/7</p>
+      </div>
+    </div>
+    <div class="flex gap-4 items-start">
+      <span class="text-3xl">✓</span>
+      <div>
+        <h3 class="font-bold text-gray-900 dark:text-white">Con empatía</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Entendemos tu momento</p>
+      </div>
+    </div>
+    <div class="flex gap-4 items-start">
+      <span class="text-3xl">✓</span>
+      <div>
+        <h3 class="font-bold text-gray-900 dark:text-white">Transparente</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Conoce todos los costos</p>
+      </div>
+    </div>
+  </div>
+</div>
       Obten más Información
     </SocialPill>
   </nav>

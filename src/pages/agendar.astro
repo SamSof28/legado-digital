@@ -1,0 +1,101 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import CalendarioAgendar from "@/components/CalendarioAgendar.astro"
+import FormularioAgendar from "@/components/FormularioAgendar.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+---
+
+<Layout
+  title="Agendar Citas - Notaría 27"
+  description="Esta sección te permite agendar citas para trámites notariales en la Notaría 27 de manera rápida y sencilla."
+>
+  <main class="px-4 py-16 md:py-36">
+    <SectionContainer>
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          📅 Agendar tu Cita
+        </h1>
+        <p class="text-xl text-gray-700 dark:text-gray-300 mb-8">
+          Selecciona la fecha y hora que mejor se adapte a tu disponibilidad. 
+          Evita filas y tiempos de espera innecesarios.
+        </p>
+
+        <div class="info-banner bg-blue-50 dark:bg-blue-950 border-l-4 border-blue-500 p-6 rounded-lg mb-12">
+          <div class="flex gap-3">
+            <div class="text-2xl">ℹ️</div>
+            <div>
+              <h3 class="font-bold text-gray-900 dark:text-white mb-2">
+                Ventajas de Agendar en Línea
+              </h3>
+              <ul class="space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                <li>✓ <strong>Sin filas:</strong> Tu cita está garantizada</li>
+                <li>✓ <strong>Confirmación instantánea:</strong> Correo y SMS</li>
+                <li>✓ <strong>Recordatorio automático:</strong> 24 horas antes</li>
+                <li>✓ <strong>Atención prioritaria:</strong> Proceso más rápido</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="flex flex-col items-center">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 w-full text-center">
+            Elige tu Fecha y Hora
+          </h2>
+          <CalendarioAgendar />
+        </div>
+
+        <div class="flex flex-col items-center">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 w-full text-center">
+            Completa tu Información
+          </h2>
+          <FormularioAgendar />
+        </div>
+      </div>
+
+      <div class="mt-16 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-lg">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          ¿Necesitas Ayuda?
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">
+          Si tienes preguntas sobre el proceso de agendamiento o necesitas asistencia especial, 
+          contáctanos directamente:
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📞</span>
+            <div>
+              <p class="font-semibold text-gray-900 dark:text-white">Teléfono</p>
+              <p class="text-gray-700 dark:text-gray-300">(60) 1234 5678</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">📧</span>
+            <div>
+              <p class="font-semibold text-gray-900 dark:text-white">Correo</p>
+              <p class="text-gray-700 dark:text-gray-300">citas@notaria27.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<style>
+  .info-banner {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

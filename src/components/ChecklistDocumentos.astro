@@ -1,0 +1,569 @@
+---
+// Componente de Checklist de documentos para sucesión
+---
+
+<div class="checklist-container">
+  <div class="info-banner">
+    <span class="info-icon">ℹ️</span>
+    <div>
+      <p class="info-text">Marca cada documento que ya tienes. Al final, podrás descargar esta lista en PDF o generar un resumen.</p>
+    </div>
+  </div>
+
+  <div class="documents-checklist">
+    <!-- Documento 1 -->
+    <div class="doc-item" data-doc-id="defuncion">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-1" />
+        <label for="doc-1" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">1. Registro Civil de Defunción</h3>
+        <p class="doc-description">
+          Certificado oficial que acredita el fallecimiento del causante. Debe ser original y reciente (máximo 3 meses).
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Registraduría Nacional</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 2 -->
+    <div class="doc-item" data-doc-id="cedulas">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-2" />
+        <label for="doc-2" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">2. Cédulas de Ciudadanía de Todos los Herederos</h3>
+        <p class="doc-description">
+          Fotocopia ampliada al 150% de las cédulas de todos los herederos que firmarán la sucesión.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Trae:</span>
+          <strong>Originales + Fotocopias ampliadas</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 3 -->
+    <div class="doc-item" data-doc-id="matrimonio">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-3" />
+        <label for="doc-3" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">3. Registro Civil de Matrimonio (si aplica)</h3>
+        <p class="doc-description">
+          Si el causante estuvo casado, certificado de matrimonio. Si hubo divorcio, sentencia de divorcio.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Notaría donde se casó o Juzgado (divorcio)</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 4 -->
+    <div class="doc-item" data-doc-id="nacimientos">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-4" />
+        <label for="doc-4" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">4. Registros Civiles de Nacimiento de los Herederos</h3>
+        <p class="doc-description">
+          Certificados de nacimiento de todos los hijos del causante (herederos). Deben ser recientes.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Registraduría Nacional</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 5 -->
+    <div class="doc-item" data-doc-id="tradicion">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-5" />
+        <label for="doc-5" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">5. Certificado de Tradición y Libertad de Inmuebles</h3>
+        <p class="doc-description">
+          Por cada propiedad (casa, apartamento, lote) que tenga el causante. Debe tener máximo 30 días de expedición.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Oficina de Registro de Instrumentos Públicos o en línea</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 6 -->
+    <div class="doc-item" data-doc-id="vehiculos">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-6" />
+        <label for="doc-6" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">6. Certificados de Tradición de Vehículos (si aplica)</h3>
+        <p class="doc-description">
+          Si el causante tenía vehículos registrados a su nombre (carros, motos). Máximo 30 días.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Oficinas de Tránsito o en línea</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 7 -->
+    <div class="doc-item" data-doc-id="predial">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-7" />
+        <label for="doc-7" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">7. Paz y Salvo de Impuesto Predial</h3>
+        <p class="doc-description">
+          Certificado que indica que la propiedad no tiene deudas de impuestos. Por cada inmueble.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Oficina de Catastro Municipal o en línea</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documento 8 -->
+    <div class="doc-item" data-doc-id="testamentos">
+      <div class="doc-checkbox-wrapper">
+        <input type="checkbox" class="doc-checkbox" id="doc-8" />
+        <label for="doc-8" class="checkbox-label"></label>
+      </div>
+      <div class="doc-content">
+        <h3 class="doc-title">8. Certificado de Últimas Voluntades y Testamentos</h3>
+        <p class="doc-description">
+          Documento que certifica si el causante dejó testamento registrado. Es obligatorio solicitarlo.
+        </p>
+        <div class="doc-location">
+          <span class="location-icon">📍</span>
+          <span>Dónde obtenerlo:</span>
+          <strong>Cualquier notaría del país</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-bar-container">
+      <div class="progress-info">
+        <span class="progress-label">Progreso:</span>
+        <span id="progress-text" class="progress-value">0/8 documentos</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <button id="download-pdf-btn" class="btn btn-primary">
+      📥 Descargar Lista en PDF
+    </button>
+    <button id="print-list-btn" class="btn btn-secondary">
+      🖨️ Imprimir Lista
+    </button>
+  </div>
+</div>
+
+<style>
+  .checklist-container {
+    width: 100%;
+  }
+
+  .info-banner {
+    background: linear-gradient(135deg, rgb(219 234 254) 0%, rgb(191 219 254) 100%);
+    border-left: 4px solid rgb(59 130 246);
+    padding: 16px 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+
+  :global(.dark) .info-banner {
+    background: linear-gradient(135deg, rgb(30 58 138) 0%, rgb(59 130 246 / 0.2) 100%);
+    border-left-color: rgb(147 197 253);
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .info-text {
+    margin: 0;
+    color: rgb(31 41 55);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  :global(.dark) .info-text {
+    color: white;
+  }
+
+  .documents-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .doc-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border: 2px solid rgb(229 231 235);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  :global(.dark) .doc-item {
+    background: rgb(31 41 55);
+    border-color: rgb(55 65 81);
+  }
+
+  .doc-item:hover {
+    border-color: rgb(59 130 246);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateX(4px);
+  }
+
+  :global(.dark) .doc-item:hover {
+    border-color: rgb(96 165 250);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.1);
+  }
+
+  .doc-item.checked {
+    background: rgb(240 253 244);
+    border-color: rgb(34 197 94);
+  }
+
+  :global(.dark) .doc-item.checked {
+    background: rgb(6 78 59);
+    border-color: rgb(52 211 153);
+  }
+
+  .doc-checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .doc-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid rgb(229 231 235);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  :global(.dark) .doc-checkbox {
+    border-color: rgb(55 65 81);
+  }
+
+  .doc-checkbox:hover {
+    border-color: rgb(59 130 246);
+  }
+
+  .doc-checkbox:checked {
+    background: rgb(34 197 94);
+    border-color: rgb(34 197 94);
+  }
+
+  .doc-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .checkbox-label {
+    display: none;
+  }
+
+  .doc-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .doc-title {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: rgb(31 41 55);
+  }
+
+  :global(.dark) .doc-title {
+    color: white;
+  }
+
+  .doc-item.checked .doc-title {
+    text-decoration: line-through;
+    color: rgb(107 114 128);
+  }
+
+  :global(.dark) .doc-item.checked .doc-title {
+    color: rgb(156 163 175);
+  }
+
+  .doc-description {
+    margin: 0 0 12px 0;
+    color: rgb(75 85 99);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  :global(.dark) .doc-description {
+    color: rgb(209 213 219);
+  }
+
+  .doc-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgb(59 130 246);
+    background: rgb(240 249 255);
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  :global(.dark) .doc-location {
+    background: rgb(30 58 138);
+    color: rgb(147 197 253);
+  }
+
+  .location-icon {
+    font-size: 1rem;
+  }
+
+  .progress-section {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgb(229 231 235);
+  }
+
+  :global(.dark) .progress-section {
+    background: rgb(31 41 55);
+    border-color: rgb(55 65 81);
+  }
+
+  .progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progress-label {
+    font-weight: 600;
+    color: rgb(31 41 55);
+  }
+
+  :global(.dark) .progress-label {
+    color: white;
+  }
+
+  .progress-value {
+    font-weight: 700;
+    color: rgb(59 130 246);
+    font-size: 1.1rem;
+  }
+
+  :global(.dark) .progress-value {
+    color: rgb(147 197 253);
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgb(229 231 235);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  :global(.dark) .progress-bar {
+    background: rgb(55 65 81);
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(34 197 94), rgb(22 163 74));
+    width: 0%;
+    transition: width 0.6s ease;
+    border-radius: 6px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, rgb(59 130 246), rgb(37 99 235));
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: rgb(59 130 246);
+    border: 2px solid rgb(59 130 246);
+  }
+
+  :global(.dark) .btn-secondary {
+    background: rgb(31 41 55);
+    border-color: rgb(96 165 250);
+    color: rgb(147 197 253);
+  }
+
+  .btn-secondary:hover {
+    background: rgb(240 249 255);
+  }
+
+  :global(.dark) .btn-secondary:hover {
+    background: rgb(55 65 81);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  const checkboxes = document.querySelectorAll('.doc-checkbox') as NodeListOf<HTMLInputElement>;
+  const docItems = document.querySelectorAll('.doc-item') as NodeListOf<HTMLElement>;
+  const progressFill = document.getElementById('progress-fill') as HTMLElement;
+  const progressText = document.getElementById('progress-text') as HTMLElement;
+  const downloadPdfBtn = document.getElementById('download-pdf-btn') as HTMLButtonElement;
+  const printListBtn = document.getElementById('print-list-btn') as HTMLButtonElement;
+
+  function updateProgress() {
+    const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const totalCount = checkboxes.length;
+    const percentage = (checkedCount / totalCount) * 100;
+
+    if (progressFill) {
+      progressFill.style.width = `${percentage}%`;
+    }
+    if (progressText) {
+      progressText.textContent = `${checkedCount}/${totalCount} documentos`;
+    }
+  }
+
+  // Agregar event listeners a los checkboxes
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener('change', () => {
+      const docItem = docItems[index];
+      if (checkbox.checked) {
+        docItem.classList.add('checked');
+      } else {
+        docItem.classList.remove('checked');
+      }
+      updateProgress();
+    });
+  });
+
+  // Click en el item completo para togglear checkbox
+  docItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).tagName !== 'INPUT') {
+        checkboxes[index].checked = !checkboxes[index].checked;
+        checkboxes[index].dispatchEvent(new Event('change'));
+      }
+    });
+  });
+
+  // Descargar PDF
+  if (downloadPdfBtn) {
+    downloadPdfBtn.addEventListener('click', () => {
+      downloadPdfBtn.disabled = true;
+      downloadPdfBtn.textContent = '⏳ Generando PDF...';
+
+      // Simular generación de PDF
+      setTimeout(() => {
+        const checkedDocs = Array.from(checkboxes)
+          .map((cb, i) => ({ checked: cb.checked, index: i }))
+          .filter(d => d.checked)
+          .map(d => d.index + 1);
+
+        console.log('PDF generado con documentos:', checkedDocs);
+
+        downloadPdfBtn.disabled = false;
+        downloadPdfBtn.textContent = '✓ PDF descargado';
+
+        setTimeout(() => {
+          downloadPdfBtn.textContent = '📥 Descargar Lista en PDF';
+        }, 2000);
+      }, 1500);
+    });
+  }
+
+  // Imprimir lista
+  if (printListBtn) {
+    printListBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  // Inicializar progreso
+  updateProgress();
+</script>

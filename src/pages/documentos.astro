@@ -1,0 +1,446 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import ChecklistDocumentos from "@/components/ChecklistDocumentos.astro"
+---
+
+<Layout 
+    title="Documentos Necesarios - Notaría 27"
+    description="Checklist completo de documentos necesarios para el trámite de sucesión en la Notaría 27. Descarga la lista en PDF."
+>
+  <main class="px-4 py-16 md:py-36">
+    <SectionContainer>
+      <div class="page-header">
+        <h1 class="page-title">
+          📋 Documentos Necesarios para Sucesión
+        </h1>
+        <p class="page-subtitle">
+          Conoce todos los documentos que necesitas para completar tu trámite de sucesión de mutuo acuerdo
+        </p>
+      </div>
+
+      <div class="important-section">
+        <div class="important-icon">⚠️</div>
+        <div class="important-content">
+          <h3>Información Importante</h3>
+          <ul>
+            <li>✓ Todos los documentos deben estar <strong>recientes y legibles</strong></li>
+            <li>✓ Algunos documentos tienen <strong>vigencia limitada</strong> (máximo 30 días)</li>
+            <li>✓ Es mejor traer <strong>documentos originales + copias</strong></li>
+            <li>✓ Si algún documento está en el exterior, necesita <strong>apostilla</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <ChecklistDocumentos />
+
+      <div class="tips-section">
+        <h2 class="tips-title">💡 Consejos Útiles</h2>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <div class="tip-number">1</div>
+            <h3>Reúne los Documentos</h3>
+            <p>Antes de agendar tu cita, asegúrate de tener o saber dónde obtener todos los documentos necesarios.</p>
+          </div>
+          <div class="tip-card">
+            <div class="tip-number">2</div>
+            <h3>Verifica Vigencia</h3>
+            <p>Algunos documentos como Certificado de Tradición tienen máximo 30 días de expedición.</p>
+          </div>
+          <div class="tip-card">
+            <div class="tip-number">3</div>
+            <h3>Hace Copias</h3>
+            <p>Es recomendable tener fotocopias ampliadas al 150% de cédulas y documentos de identificación.</p>
+          </div>
+          <div class="tip-card">
+            <div class="tip-number">4</div>
+            <h3>Consulta Dudas</h3>
+            <p>Si tienes dudas sobre algún documento, contáctanos antes de agendar. Estamos aquí para ayudarte.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section">
+        <h2 class="faq-title">❓ Preguntas Frecuentes</h2>
+        <div class="faq-items">
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Dónde obtengo el Certificado de Últimas Voluntades?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Puedes solicitarlo en cualquier notaría del país sin costo. Te entregan una constancia de si el causante tiene testamento registrado o no. Es un documento obligatorio.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Qué pasa si el causante tenía deudas?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Las deudas se pagan del patrimonio del difunto antes de repartir la herencia. Por eso es importante documentar el estado financiero completo. La Notaría te asesorará al respecto.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Puedo tramitar la sucesión sin todos los herederos presentes?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No, todos los herederos deben estar presentes para firmar la escritura de sucesión. Si alguno no puede asistir, debe dar poder a otra persona mediante documento notariado.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Cuánto tiempo es válido el Certificado de Tradición?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>El Certificado de Tradición y Libertad tiene una validez máxima de 30 días desde su expedición. Si tiene más de 30 días, deberás solicitar uno nuevo antes de proceder con el trámite.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ¿Necesito traductor si tengo documentos en otro idioma?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Sí, si tienes documentos en otro idioma, necesitarás una traducción certificada al español hecha por un traductor autorizado. Además, requieren apostilla si son internacionales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2 class="cta-title">¿Listo para iniciar tu sucesión?</h2>
+        <p class="cta-text">Una vez tengas todos los documentos, agenda tu cita con nosotros. Nuestro equipo te guiará en todo el proceso.</p>
+        <a href="/agendar" class="cta-button">📅 Agendar Mi Cita Ahora</a>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<style>
+  .page-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgb(17 24 39);
+    margin-bottom: 16px;
+  }
+
+  :global(.dark) .page-title {
+    color: white;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    color: rgb(107 114 128);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  :global(.dark) .page-subtitle {
+    color: rgb(156 163 175);
+  }
+
+  .important-section {
+    background: linear-gradient(135deg, rgb(254 242 242), rgb(254 226 226));
+    border-left: 4px solid rgb(239 68 68);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  :global(.dark) .important-section {
+    background: linear-gradient(135deg, rgb(127 29 29), rgb(153 27 27));
+    border-left-color: rgb(248 113 113);
+  }
+
+  .important-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .important-content h3 {
+    margin: 0 0 12px 0;
+    color: rgb(153 27 27);
+    font-size: 1.1rem;
+  }
+
+  :global(.dark) .important-content h3 {
+    color: rgb(254 226 226);
+  }
+
+  .important-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .important-content li {
+    padding: 6px 0;
+    color: rgb(127 29 29);
+    font-weight: 500;
+  }
+
+  :global(.dark) .important-content li {
+    color: rgb(248 113 113);
+  }
+
+  .tips-section {
+    margin-bottom: 48px;
+  }
+
+  .tips-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  :global(.dark) .tips-title {
+    color: white;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .tip-card {
+    background: white;
+    border: 2px solid rgb(229 231 235);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .tip-card {
+    background: rgb(31 41 55);
+    border-color: rgb(55 65 81);
+  }
+
+  .tip-card:hover {
+    border-color: rgb(59 130 246);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .tip-card:hover {
+    border-color: rgb(96 165 250);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.1);
+  }
+
+  .tip-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgb(59 130 246), rgb(37 99 235));
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+  }
+
+  .tip-card h3 {
+    margin: 0 0 12px 0;
+    color: rgb(31 41 55);
+    font-size: 1.1rem;
+  }
+
+  :global(.dark) .tip-card h3 {
+    color: white;
+  }
+
+  .tip-card p {
+    margin: 0;
+    color: rgb(75 85 99);
+    line-height: 1.6;
+  }
+
+  :global(.dark) .tip-card p {
+    color: rgb(209 213 219);
+  }
+
+  .faq-section {
+    margin-bottom: 48px;
+  }
+
+  .faq-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin-bottom: 32px;
+    text-align: center;
+  }
+
+  :global(.dark) .faq-title {
+    color: white;
+  }
+
+  .faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border: 1px solid rgb(229 231 235);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  :global(.dark) .faq-item {
+    border-color: rgb(55 65 81);
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 16px 20px;
+    background: white;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(31 41 55);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .faq-question {
+    background: rgb(31 41 55);
+    color: white;
+  }
+
+  .faq-question:hover {
+    background: rgb(240 249 255);
+  }
+
+  :global(.dark) .faq-question:hover {
+    background: rgb(55 65 81);
+  }
+
+  .faq-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 16px 20px;
+    background: rgb(240 249 255);
+    color: rgb(31 41 55);
+    line-height: 1.8;
+  }
+
+  :global(.dark) .faq-answer {
+    background: rgb(15 23 42);
+    color: rgb(209 213 219);
+  }
+
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgb(240 249 255), rgb(224 242 254));
+    border-radius: 12px;
+    padding: 48px 32px;
+  }
+
+  :global(.dark) .cta-section {
+    background: linear-gradient(135deg, rgb(30 58 138), rgb(15 23 42));
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(17 24 39);
+    margin-bottom: 16px;
+  }
+
+  :global(.dark) .cta-title {
+    color: white;
+  }
+
+  .cta-text {
+    color: rgb(75 85 99);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+  }
+
+  :global(.dark) .cta-text {
+    color: rgb(209 213 219);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, rgb(59 130 246), rgb(37 99 235));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  }
+</style>
+
+<script>
+  // FAQ Accordion
+  const faqQuestions = document.querySelectorAll('.faq-question') as NodeListOf<HTMLButtonElement>;
+
+  faqQuestions.forEach((question) => {
+    question.addEventListener('click', () => {
+      const faqItem = question.parentElement as HTMLElement;
+      const isActive = faqItem?.classList.contains('active');
+
+      // Cerrar todos los demás
+      document.querySelectorAll('.faq-item.active').forEach((item) => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+        }
+      });
+
+      // Toggle el actual
+      faqItem?.classList.toggle('active');
+    });
+  });
+</script>

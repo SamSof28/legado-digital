@@ -1,55 +1,200 @@
 ---
 import Layout from "@/layouts/Layout.astro"
-
-import AboutMe from "@/components/AboutMe.astro"
-import AreasAplicacion from "@/components/AreasAplicacion.astro"
-import CasoReal from "@/components/CasoReal.astro"
-import PasosImplementacion from "@/components/PasosImplementacion.astro"
-import ProfileCheck from "@/components/icons/ProfileCheck.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
-import Hero from "@/components/Hero.astro"
-import TendenciaTecnologica from "@/components/TendenciaTecnologica.astro"
 import TitleSection from "@/components/TitleSection.astro"
 ---
 
 <Layout
-  title="Ciberseguridad - Tecnología Emergente para la Protección Digital"
-  description="Explora la ciberseguridad como tecnología emergente: qué es, cómo implementarla, áreas de aplicación y casos reales de éxito en la protección digital."
+  title="Legado Digital - Notaría 27"
+  description="Portal integral para tramitar sucesiones en la Notaría 27. Sistema de citas online, calculadora de costos, seguimiento en tiempo real y documentos digitales."
 >
   <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero />
-    </SectionContainer>
-    <div class="space-y-24">
-    
-    <!-- Sección 1: ¿En qué consiste la tendencia tecnológica? -->
-    <SectionContainer id="tendencia">
-      <TendenciaTecnologica />
+    <!-- Hero Section -->
+    <SectionContainer class="py-20 md:py-40">
+      <div class="text-center space-y-8 max-w-4xl mx-auto">
+        <div class="inline-block">
+          <span class="text-6xl md:text-7xl font-bold">
+            <span class="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              Legado Digital
+            </span>
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          Tu Sucesión, Hecha Simple
+        </h1>
+        
+        <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+          Tramita la sucesión de tu ser querido con empatía, claridad y eficiencia. 
+          En Notaría 27 entendemos que este es un momento delicado. Por eso creamos una plataforma 
+          que te acompaña en cada paso del proceso.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+          <a href="/documentos" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition hover:shadow-lg">
+            📋 Conoce los Documentos
+          </a>
+          <a href="/agendar" class="px-8 py-4 bg-white dark:bg-gray-800 border-2 border-blue-600 text-blue-600 dark:text-blue-400 font-bold rounded-lg transition hover:shadow-lg">
+            📅 Agendar Mi Cita
+          </a>
+        </div>
+      </div>
     </SectionContainer>
 
-    <!-- Sección 2: Pasos a seguir para usarla -->
-    <SectionContainer id="pasos">
-      <PasosImplementacion />
+    <!-- Modules Section -->
+    <SectionContainer class="py-20">
+      <TitleSection title="Nuestros Servicios" subTitle="Todo lo que necesitas para tu sucesión" />
+      
+      <div class="grid md:grid-cols-3 gap-8 mt-16">
+        <!-- Module 1 -->
+        <a href="/documentos" class="group">
+          <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg p-8 transition hover:border-blue-600 hover:shadow-lg hover:scale-105">
+            <div class="text-5xl mb-4">📋</div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Pre-Trámite Inteligente
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              Información clara sobre documentos necesarios, calculadora de costos y preguntas frecuentes para que llegues preparado.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>✓ Checklist de documentos</li>
+              <li>✓ Calculadora de costos</li>
+              <li>✓ Preguntas frecuentes</li>
+            </ul>
+          </div>
+        </a>
+
+        <!-- Module 2 -->
+        <a href="/agendar" class="group">
+          <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg p-8 transition hover:border-blue-600 hover:shadow-lg hover:scale-105">
+            <div class="text-5xl mb-4">📅</div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Turno Inteligente
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              Sistema de agendamiento online 24/7. Selecciona la fecha y hora que mejor se adapte a ti, sin filas.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>✓ Sin filas ni esperas</li>
+              <li>✓ Disponible 24/7</li>
+              <li>✓ Confirmación inmediata</li>
+            </ul>
+          </div>
+        </a>
+
+        <!-- Module 3 -->
+        <a href="/mi-sucesion" class="group">
+          <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg p-8 transition hover:border-blue-600 hover:shadow-lg hover:scale-105">
+            <div class="text-5xl mb-4">📊</div>
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Mi Sucesión
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              Seguimiento en tiempo real del estado de tu trámite. Accede a todos tus documentos desde un solo lugar.
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>✓ Seguimiento en tiempo real</li>
+              <li>✓ Centro de documentos</li>
+              <li>✓ Notificaciones automáticas</li>
+            </ul>
+          </div>
+        </a>
+      </div>
     </SectionContainer>
 
-    <!-- Sección 3: Áreas de aplicación -->
-    <SectionContainer id="aplicaciones">
-      <AreasAplicacion />
+    <!-- Benefits Section -->
+    <SectionContainer class="py-20 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 rounded-lg p-12">
+      <TitleSection title="¿Por qué Elegirnos?" subTitle="Beneficios para ti y tu familia" />
+      
+      <div class="grid md:grid-cols-2 gap-12 mt-12 max-w-4xl mx-auto">
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <span class="text-3xl">❤️</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Con Empatía</h4>
+              <p class="text-gray-700 dark:text-gray-300">Entendemos que pierden a alguien querido. Te acompañamos con sensibilidad.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="text-3xl">⏱️</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Más Rápido</h4>
+              <p class="text-gray-700 dark:text-gray-300">Reduce visitas innecesarias y tiempo total del trámite.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="text-3xl">💰</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Transparencia</h4>
+              <p class="text-gray-700 dark:text-gray-300">Conoce los costos exactos antes de iniciar el trámite.</p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <span class="text-3xl">📱</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Digitalmente Moderno</h4>
+              <p class="text-gray-700 dark:text-gray-300">Acceso desde tu teléfono o computadora, disponible siempre.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="text-3xl">📊</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Seguimiento Real</h4>
+              <p class="text-gray-700 dark:text-gray-300">Sabe exactamente en qué etapa está tu sucesión en todo momento.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <span class="text-3xl">👥</span>
+            <div>
+              <h4 class="font-bold text-gray-900 dark:text-white text-lg">Apoyo Dedicado</h4>
+              <p class="text-gray-700 dark:text-gray-300">Nuestro equipo está aquí para responder tus preguntas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </SectionContainer>
 
-    <!-- Sección 4: Caso real -->
-    <SectionContainer id="caso-real">
-      <CasoReal />
+    <!-- Stats Section -->
+    <SectionContainer class="py-20">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">100+</div>
+          <p class="text-gray-700 dark:text-gray-300">Trámites completados</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">⬇️ 70%</div>
+          <p class="text-gray-700 dark:text-gray-300">Menos visitas innecesarias</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">24h</div>
+          <p class="text-gray-700 dark:text-gray-300">Confirmación de cita</p>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">9/10</div>
+          <p class="text-gray-700 dark:text-gray-300">Satisfacción del cliente</p>
+        </div>
+      </div>
     </SectionContainer>
 
-    <!-- Sección adicional: Sobre el autor -->
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre el Autor
-      </TitleSection>
-      <AboutMe />
+    <!-- CTA Section -->
+    <SectionContainer class="py-20 text-center space-y-8">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white">
+        Inicia tu sucesión hoy
+      </h2>
+      <p class="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+        No esperes más. Comienza el proceso con confianza. Nuestro equipo está listo para acompañarte.
+      </p>
+      <a href="/documentos" class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition hover:shadow-lg">
+        Comenzar Ahora 🚀
+      </a>
     </SectionContainer>
-  </div>
   </main>
 </Layout>
+
+<style>
+  :global(body) {
+    scroll-behavior: smooth;
+  }
+</style>
