@@ -68,9 +68,13 @@ import Layout from "@/layouts/Layout.astro"
 
     // Función principal de cálculo
     function calcularCostos() {
-      const valorBienes = parseFloat(document.getElementById('valor-bienes').value) || 0;
-      const pasivos = parseFloat(document.getElementById('pasivos').value) || 0;
-      const valorInmuebles = parseFloat(document.getElementById('valor-inmuebles').value) || 0;
+      const valorBienesInput = document.getElementById('valor-bienes') as HTMLInputElement | null;
+      const pasivosInput = document.getElementById('pasivos') as HTMLInputElement | null;
+      const valorInmueblesInput = document.getElementById('valor-inmuebles') as HTMLInputElement | null;
+
+      const valorBienes = parseFloat(valorBienesInput?.value || '0') || 0;
+      const pasivos = parseFloat(pasivosInput?.value || '0') || 0;
+      const valorInmuebles = parseFloat(valorInmueblesInput?.value || '0') || 0;
 
       if (valorBienes <= 0) {
         alert('Ingrese un valor válido para los bienes');
