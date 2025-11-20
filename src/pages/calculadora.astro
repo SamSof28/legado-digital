@@ -100,12 +100,12 @@ import Layout from "@/layouts/Layout.astro"
 
     function mostrarResultados(notariales: number, ganancia: number, registro: number, total: number) {
       const resultNotariales = document.getElementById('result-notariales') as HTMLSpanElement | null;
-      const resultGanancia = document.getElementById('result-ganancia') as HTMLSpanElement | null;
+      //const resultGanancia = document.getElementById('result-ganancia') as HTMLSpanElement | null;
       const resultRegistro = document.getElementById('result-registro') as HTMLSpanElement | null;
       const resultTotal = document.getElementById('result-total') as HTMLSpanElement | null;
 
       if (resultNotariales) resultNotariales.textContent = formatearMoneda(notariales);
-      if (resultGanancia) resultGanancia.textContent = formatearMoneda(ganancia);
+      //if (resultGanancia) resultGanancia.textContent = formatearMoneda(ganancia);
       if (resultRegistro) resultRegistro.textContent = formatearMoneda(registro);
       if (resultTotal) resultTotal.textContent = formatearMoneda(total);
       
